@@ -1,0 +1,48 @@
+{
+    "data": [
+        {
+            "id": 1,
+            "accountNumber": 3000,
+            "accountName": "Salgsinntekter avgiftspliktig",
+            "category": "buy",
+            "vatRate": 25,
+            "vatCode": "s",
+            "externalTurnoverClass": "",
+            "externalVatCode": "",
+            "comments": ""
+        },
+        {
+            "id": 2,
+            "accountNumber": 3090,
+            "accountName": "Vals fgood",
+            "category": "sale",
+            "vatRate": 25,
+            "vatCode": "s",
+            "externalTurnoverClass": "",
+            "externalVatCode": "",
+            "comments": ""
+        },
+        {
+            "id": 3,
+            "accountNumber": 1000,
+            "accountName": "Lorem Ipsum",
+            "category": "buy",
+            "vatRate": 25,
+            "vatCode": "s",
+            "externalTurnoverClass": "",
+            "externalVatCode": "",
+            "comments": ""
+        },
+        {
+            "id": 4,
+            "accountNumber": 2090,
+            "accountName": "Dolores Valdis",
+            "category": "buy",
+            "vatRate": 5,
+            "vatCode": "s",
+            "externalTurnoverClass": "",
+            "externalVatCode": "",
+            "comments": ""
+        }
+    ]
+}
