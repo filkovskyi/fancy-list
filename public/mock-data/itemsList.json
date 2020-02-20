@@ -1,48 +1,279 @@
 {
-    "data": [
+    "content": [
         {
-            "id": 1,
-            "accountNumber": 3000,
-            "accountName": "Salgsinntekter avgiftspliktig",
-            "category": "buy",
-            "vatRate": 25,
-            "vatCode": "s",
-            "externalTurnoverClass": "",
-            "externalVatCode": "",
-            "comments": ""
+            "accountNumber": "3000",
+            "externalTaxCode": null,
+            "externalRevenueClass": null,
+            "name": "Salgsinntekter avgiftspliktig",
+            "comment": null,
+            "currentVatPercentage": 25.00,
+            "vatCategoryCode": "S",
+            "financialAccountCategory": "purchases",
+            "companyId": 1,
+            "id": 113543,
+            "createdBySystemUserFullName": null,
+            "lastModifiedBySystemUserFullName": "Angela Merkel",
+            "createdDate": null,
+            "lastModifiedDate": "2019-08-10T21:30:39.213045+02:00",
+            "lastModifiedBySystemUser": 577,
+            "createdBySystemUser": null,
+            "version": null,
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://demo.moment.team/api/1.0/companies/demo/financialAccounts/113543"
+                }
+            ]
         },
         {
-            "id": 2,
-            "accountNumber": 3090,
-            "accountName": "Vals fgood",
-            "category": "sale",
-            "vatRate": 25,
-            "vatCode": "s",
-            "externalTurnoverClass": "",
-            "externalVatCode": "",
-            "comments": ""
+            "accountNumber": "3090",
+            "externalTaxCode": null,
+            "externalRevenueClass": null,
+            "name": "Viderefakturerte utlegg avgiftspliktig",
+            "comment": null,
+            "currentVatPercentage": 25.00,
+            "vatCategoryCode": "S",
+            "financialAccountCategory": "sales",
+            "companyId": 1,
+            "id": 113545,
+            "createdBySystemUserFullName": null,
+            "lastModifiedBySystemUserFullName": "Angela Merkel",
+            "createdDate": null,
+            "lastModifiedDate": "2018-05-24T15:18:56.67+02:00",
+            "lastModifiedBySystemUser": 577,
+            "createdBySystemUser": null,
+            "version": null,
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://demo.moment.team/api/1.0/companies/demo/financialAccounts/113545"
+                }
+            ]
         },
         {
-            "id": 3,
-            "accountNumber": 1000,
-            "accountName": "Lorem Ipsum",
-            "category": "buy",
-            "vatRate": 25,
-            "vatCode": "s",
-            "externalTurnoverClass": "",
-            "externalVatCode": "",
-            "comments": ""
+            "accountNumber": "3100",
+            "externalTaxCode": null,
+            "externalRevenueClass": null,
+            "name": "Salgsinntekter avgiftsfritt",
+            "comment": null,
+            "currentVatPercentage": 0.00,
+            "vatCategoryCode": "Z",
+            "financialAccountCategory": "sales",
+            "companyId": 1,
+            "id": 113547,
+            "createdBySystemUserFullName": null,
+            "lastModifiedBySystemUserFullName": null,
+            "createdDate": null,
+            "lastModifiedDate": null,
+            "lastModifiedBySystemUser": null,
+            "createdBySystemUser": null,
+            "version": null,
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://demo.moment.team/api/1.0/companies/demo/financialAccounts/113547"
+                }
+            ]
         },
         {
-            "id": 4,
-            "accountNumber": 2090,
-            "accountName": "Dolores Valdis",
-            "category": "buy",
-            "vatRate": 5,
-            "vatCode": "s",
-            "externalTurnoverClass": "",
-            "externalVatCode": "",
-            "comments": ""
+            "accountNumber": "3130",
+            "externalTaxCode": null,
+            "externalRevenueClass": null,
+            "name": "Viderefakturerte utlegg avgiftsfritt",
+            "comment": null,
+            "currentVatPercentage": 0.00,
+            "vatCategoryCode": "Z",
+            "financialAccountCategory": "sales",
+            "companyId": 1,
+            "id": 113549,
+            "createdBySystemUserFullName": null,
+            "lastModifiedBySystemUserFullName": null,
+            "createdDate": null,
+            "lastModifiedDate": null,
+            "lastModifiedBySystemUser": null,
+            "createdBySystemUser": null,
+            "version": null,
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://demo.moment.team/api/1.0/companies/demo/financialAccounts/113549"
+                }
+            ]
+        },
+        {
+            "accountNumber": "3200",
+            "externalTaxCode": null,
+            "externalRevenueClass": null,
+            "name": "Salgsinntekter utenfor avgiftsområdet",
+            "comment": null,
+            "currentVatPercentage": 0.00,
+            "vatCategoryCode": "Z",
+            "financialAccountCategory": "sales",
+            "companyId": 1,
+            "id": 113551,
+            "createdBySystemUserFullName": null,
+            "lastModifiedBySystemUserFullName": null,
+            "createdDate": null,
+            "lastModifiedDate": null,
+            "lastModifiedBySystemUser": null,
+            "createdBySystemUser": null,
+            "version": null,
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://demo.moment.team/api/1.0/companies/demo/financialAccounts/113551"
+                }
+            ]
+        },
+        {
+            "accountNumber": "3201",
+            "externalTaxCode": null,
+            "externalRevenueClass": null,
+            "name": "Produkter til utlandet",
+            "comment": null,
+            "currentVatPercentage": 5.00,
+            "vatCategoryCode": "S",
+            "financialAccountCategory": "sales",
+            "companyId": 1,
+            "id": 174416,
+            "createdBySystemUserFullName": "Angela Merkel",
+            "lastModifiedBySystemUserFullName": "Angela Merkel",
+            "createdDate": "2018-10-10T09:32:07.182+02:00",
+            "lastModifiedDate": "2018-10-10T09:32:07.182+02:00",
+            "lastModifiedBySystemUser": 577,
+            "createdBySystemUser": 577,
+            "version": null,
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://demo.moment.team/api/1.0/companies/demo/financialAccounts/174416"
+                }
+            ]
+        },
+        {
+            "accountNumber": "7141",
+            "externalTaxCode": null,
+            "externalRevenueClass": null,
+            "name": "Reisekostnad, ikke opplysningspliktig, høy sats",
+            "comment": null,
+            "currentVatPercentage": 25.00,
+            "vatCategoryCode": "0",
+            "financialAccountCategory": "purchases",
+            "companyId": 1,
+            "id": 169434,
+            "createdBySystemUserFullName": "Angela Merkel",
+            "lastModifiedBySystemUserFullName": "Angela Merkel",
+            "createdDate": "2018-08-16T15:46:44.587+02:00",
+            "lastModifiedDate": "2018-10-17T14:59:56.745+02:00",
+            "lastModifiedBySystemUser": 577,
+            "createdBySystemUser": 577,
+            "version": null,
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://demo.moment.team/api/1.0/companies/demo/financialAccounts/169434"
+                }
+            ]
+        },
+        {
+            "accountNumber": "7142",
+            "externalTaxCode": null,
+            "externalRevenueClass": null,
+            "name": "Reisekostnad, ikke opplysningspliktig, middels sats",
+            "comment": null,
+            "currentVatPercentage": 15.00,
+            "vatCategoryCode": "0",
+            "financialAccountCategory": "purchases",
+            "companyId": 1,
+            "id": 169435,
+            "createdBySystemUserFullName": "Angela Merkel",
+            "lastModifiedBySystemUserFullName": "Angela Merkel",
+            "createdDate": "2018-08-16T15:51:26.545+02:00",
+            "lastModifiedDate": "2018-11-06T15:59:17.141+01:00",
+            "lastModifiedBySystemUser": 577,
+            "createdBySystemUser": 577,
+            "version": null,
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://demo.moment.team/api/1.0/companies/demo/financialAccounts/169435"
+                }
+            ]
+        },
+        {
+            "accountNumber": "7143",
+            "externalTaxCode": null,
+            "externalRevenueClass": null,
+            "name": "Reisekostnad, ikke opplysningspliktig, lav sats",
+            "comment": null,
+            "currentVatPercentage": 12.00,
+            "vatCategoryCode": "0",
+            "financialAccountCategory": "purchases",
+            "companyId": 1,
+            "id": 169436,
+            "createdBySystemUserFullName": "Angela Merkel",
+            "lastModifiedBySystemUserFullName": "Angela Merkel",
+            "createdDate": "2018-08-16T15:51:45.651+02:00",
+            "lastModifiedDate": "2018-10-17T14:59:56.746+02:00",
+            "lastModifiedBySystemUser": 577,
+            "createdBySystemUser": 577,
+            "version": null,
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://demo.moment.team/api/1.0/companies/demo/financialAccounts/169436"
+                }
+            ]
+        },
+        {
+            "accountNumber": "7798",
+            "externalTaxCode": null,
+            "externalRevenueClass": null,
+            "name": "Øreavrunding avgiftsfritt",
+            "comment": null,
+            "currentVatPercentage": 0.00,
+            "vatCategoryCode": "Z",
+            "financialAccountCategory": "sales",
+            "companyId": 1,
+            "id": 113553,
+            "createdBySystemUserFullName": null,
+            "lastModifiedBySystemUserFullName": "Angela Merkel",
+            "createdDate": null,
+            "lastModifiedDate": "2019-12-20T09:27:22.700572+01:00",
+            "lastModifiedBySystemUser": 577,
+            "createdBySystemUser": null,
+            "version": null,
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://demo.moment.team/api/1.0/companies/demo/financialAccounts/113553"
+                }
+            ]
+        },
+        {
+            "accountNumber": "7799",
+            "externalTaxCode": null,
+            "externalRevenueClass": null,
+            "name": "Annen kostnad, ikke fradragsberettiget",
+            "comment": null,
+            "currentVatPercentage": 0.00,
+            "vatCategoryCode": "0",
+            "financialAccountCategory": "purchases",
+            "companyId": 1,
+            "id": 404872,
+            "createdBySystemUserFullName": "Angela Merkel",
+            "lastModifiedBySystemUserFullName": "Angela Merkel",
+            "createdDate": "2020-01-09T17:07:11.313217+01:00",
+            "lastModifiedDate": "2020-01-09T17:07:11.313217+01:00",
+            "lastModifiedBySystemUser": 577,
+            "createdBySystemUser": 577,
+            "version": null,
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "https://demo.moment.team/api/1.0/companies/demo/financialAccounts/404872"
+                }
+            ]
         }
     ]
 }
