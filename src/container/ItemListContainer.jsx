@@ -11,11 +11,9 @@ class ItemListContainer extends Component {
   }
 
   render() {
-    let data
-    let filteredData = this.props.filteredData
-
-    filteredData.length > 0 ? (data = filteredData) : (data = this.props.data)
-
+    let data = this.props.filteredData
+    //let filteredData = this.props.filteredData
+    //filteredData.length > 0 ? (data = filteredData) : (data = this.props.data)
     return (
       <Layout>
         <Row>

@@ -11,9 +11,10 @@ const filterItemsByName = (data, param) => {
 
 const filterItemsByNumber = (data, param) => {
   if (param > 1) {
-    return data.filter(account => {
+    const filteredArr = data.filter(account => {
       return account.accountNumber < param
     })
+    return filteredArr
   } else {
     return data
   }
