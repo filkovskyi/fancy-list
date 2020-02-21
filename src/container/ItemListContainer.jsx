@@ -1,11 +1,11 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
-import { LIST_FETCH_REQUESTED, CREATE_FORM_ITEM } from "../constant"
+import { LIST_FETCH_REQUESTED, CREATE_FORM_ITEM, EDIT_FORM_ITEM, DELETE_FORM_ITEM } from "../constant"
 import "antd/dist/antd.css"
 import FilterBar from "../components/FilterBar"
 import SimpleForm from "../components/SimpleForm"
 
-import { Row, Col, Layout, Icon, Collapse } from "antd"
+import { Row, Col, Layout, Icon, Collapse, Button } from "antd"
 const { Panel } = Collapse
 
 class ItemListContainer extends Component {
@@ -21,6 +21,14 @@ class ItemListContainer extends Component {
     this.props.submitForm(values)
   }
 
+  editFormPathValue(key) {
+    this.props.editableFormHandler(key)
+  }
+
+  deleteItem(key) {
+    this.props.deleteItemHandler(key)
+  }
+
   render() {
     let data = this.props.filteredData
     const { showCreateForm } = this.props
@@ -31,13 +39,23 @@ class ItemListContainer extends Component {
             <h3 style={{ marginBottom: 16 }}>Filkovskyi Sergey</h3>
             <FilterBar />
             {showCreateForm && <SimpleForm onSubmit={this.handleSubmitForm} />}
-            <Collapse accordion expandIcon={() => <Icon type="edit" />}>
+            <Collapse
+              accordion
+              expandIconPosition={"right"}
+              expandIcon={() => <Icon type="edit" />}
+              onChange={this.editFormPathValue.bind(this)}
+            >
               {data.map((item, key) => {
                 const data = `${item.accountNumber} - ${item.financialAccountCategory} -
                 ${item.currentVatPercentage}% - (${item.vatCategoryCode}) -${item.name}`
                 return (
                   <Panel header={data} key={key}>
-                    {/* <SimpleForm onSubmit={this.handleSubmitForm} /> */}
+                    <SimpleForm data={item} onSubmit={this.handleSubmitForm} />
+                    <Button
+                      onClick={() => this.deleteItem(key)}
+                      style={{ marginRight: "35%" }}
+                      icon="delete"
+                    />
                   </Panel>
                 )
               })}
@@ -67,6 +85,12 @@ const mapDispatchToProps = dispatch => {
     },
     submitForm: param => {
       dispatch({ type: CREATE_FORM_ITEM, payload: param })
+    },
+    editableFormHandler: param => {
+      dispatch({ type: EDIT_FORM_ITEM, payload: param })
+    },
+    deleteItemHandler: param => {
+      dispatch({ type: DELETE_FORM_ITEM, payload: param })
     }
   }
 }

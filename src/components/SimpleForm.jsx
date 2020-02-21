@@ -1,11 +1,11 @@
 import React from "react"
+import { connect } from "react-redux"
 import { Field, reduxForm } from "redux-form"
-import { Form, Input, Radio, Select, Checkbox, Button, DatePicker } from "antd"
+import { Form, Input, Radio, Button } from "antd"
 
 const FormItem = Form.Item
 const RadioGroup = Radio.Group
 const { TextArea } = Input
-const { RangePicker } = DatePicker
 
 const formItemLayout = {
   labelCol: {
@@ -50,7 +50,7 @@ const AInput = makeField(Input)
 const ARadioGroup = makeField(RadioGroup)
 const ATextarea = makeField(TextArea)
 
-const SimpleForm = props => {
+let SimpleForm = props => {
   const { handleSubmit, pristine, reset, submitting } = props
   return (
     <Form onSubmit={handleSubmit}>
@@ -91,7 +91,6 @@ const SimpleForm = props => {
       />
       <Field label="Comment" name="comment" component={ATextarea} />
       <FormItem {...tailFormItemLayout}>
-        <Button style={{ marginRight: "35%" }} icon="delete" />
         <Button disabled={pristine || submitting} onClick={reset}>
           Clear
         </Button>
@@ -117,7 +116,15 @@ const validate = values => {
   return errors
 }
 
-export default reduxForm({
-  form: "simple", // a unique identifier for this form
+SimpleForm = reduxForm({
+  form: "simple",
   validate
 })(SimpleForm)
+
+// const mapStateToProps = state => {
+//   return {
+//     initialValues: state.rootReducer.editableForm
+//   }
+// }
+
+export default connect(null, null)(SimpleForm)

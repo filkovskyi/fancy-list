@@ -5,6 +5,8 @@ import {
   LIST_FILTER_BY_NAME,
   LIST_FILTER_BY_NUMBER,
   CREATE_FORM_ITEM,
+  EDIT_FORM_ITEM,
+  DELETE_FORM_ITEM,
   CREATE_NEW_ACCOUNT
 } from "../constant"
 
@@ -16,6 +18,7 @@ const initialState = {
   maxNumber: 0,
   loading: false,
   showCreateForm: false,
+  editableForm: {},
   error: ""
 }
 
@@ -64,6 +67,24 @@ const rootReducer = (state = initialState, action) => {
         filteredData: [...state.data, action.payload],
         data: [...state.data, action.payload],
         loading: false
+      }
+    }
+    case EDIT_FORM_ITEM: {
+      return {
+        ...state,
+        editableForm: state.data[action.payload]
+      }
+    }
+    case DELETE_FORM_ITEM: {
+      const removableId = state.data[action.payload].id
+      return {
+        ...state,
+        filteredData: [...state.data].filter(i => {
+          return i.id !== removableId
+        }),
+        data: [...state.data].filter(i => {
+          return i.id !== removableId
+        })
       }
     }
     case CREATE_NEW_ACCOUNT: {
