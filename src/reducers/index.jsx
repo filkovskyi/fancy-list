@@ -4,10 +4,10 @@ import {
   LIST_FETCH_FAILED,
   LIST_FILTER_BY_NAME,
   LIST_FILTER_BY_NUMBER,
-  CREATE_FORM_ITEM,
+  SUBMIT_FORM_ITEM,
   EDIT_FORM_ITEM,
   DELETE_FORM_ITEM,
-  CREATE_NEW_ACCOUNT
+  SHOW_CREATE_NEW_ACCOUNT_FORM
 } from "../constant"
 
 import { filterItemsByName, filterItemsByNumber, maxAccountNumber } from "./reducer-helper"
@@ -61,12 +61,32 @@ const rootReducer = (state = initialState, action) => {
         loading: false
       }
     }
-    case CREATE_FORM_ITEM: {
-      return {
-        ...state,
-        filteredData: [...state.data, action.payload],
-        data: [...state.data, action.payload],
-        loading: false
+    case SUBMIT_FORM_ITEM: {
+      debugger
+      // Edit existing items
+      if (action.payload.id !== undefined) {
+        const submittedId = action.payload.id
+        const filteredDataSet = [...state.data].filter(i => {
+          return i.id !== submittedId
+        })
+        return {
+          ...state,
+          filteredData: [...filteredDataSet, action.payload],
+          data: [...filteredDataSet, action.payload],
+          loading: false
+        }
+      } else {
+        // Create new items
+        const generatedRandomId = Math.random()
+          .toString(36)
+          .substr(2, 9)
+
+        return {
+          ...state,
+          filteredData: [...state.data, { ...action.payload, id: generatedRandomId }],
+          data: [...state.data, { ...action.payload, id: generatedRandomId }],
+          loading: false
+        }
       }
     }
     case EDIT_FORM_ITEM: {
@@ -87,7 +107,7 @@ const rootReducer = (state = initialState, action) => {
         })
       }
     }
-    case CREATE_NEW_ACCOUNT: {
+    case SHOW_CREATE_NEW_ACCOUNT_FORM: {
       return {
         ...state,
         showCreateForm: !state.showCreateForm

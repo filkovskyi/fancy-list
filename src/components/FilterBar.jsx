@@ -1,6 +1,10 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
-import { LIST_FILTER_BY_NAME, LIST_FILTER_BY_NUMBER, CREATE_NEW_ACCOUNT } from "../constant"
+import {
+  LIST_FILTER_BY_NAME,
+  LIST_FILTER_BY_NUMBER,
+  SHOW_CREATE_NEW_ACCOUNT_FORM
+} from "../constant"
 import { debounce } from "lodash"
 import { Slider, Row, Col, Input, Button } from "antd"
 
@@ -88,7 +92,7 @@ const mapDispatchToProps = dispatch => {
       dispatch({ type: LIST_FILTER_BY_NUMBER, payload: param })
     },
     createNewAccount: () => {
-      dispatch({ type: CREATE_NEW_ACCOUNT })
+      dispatch({ type: SHOW_CREATE_NEW_ACCOUNT_FORM })
     }
   }
 }

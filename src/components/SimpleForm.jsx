@@ -121,10 +121,11 @@ SimpleForm = reduxForm({
   validate
 })(SimpleForm)
 
-// const mapStateToProps = state => {
-//   return {
-//     initialValues: state.rootReducer.editableForm
-//   }
-// }
+const mapStateToProps = state => {
+  return {
+    initialValues: state.rootReducer.editableForm,
+    enableReinitialize: true
+  }
+}
 
-export default connect(null, null)(SimpleForm)
+export default connect(mapStateToProps, null)(SimpleForm)

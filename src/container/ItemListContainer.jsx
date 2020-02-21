@@ -1,6 +1,11 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
-import { LIST_FETCH_REQUESTED, CREATE_FORM_ITEM, EDIT_FORM_ITEM, DELETE_FORM_ITEM } from "../constant"
+import {
+  LIST_FETCH_REQUESTED,
+  SUBMIT_FORM_ITEM,
+  EDIT_FORM_ITEM,
+  DELETE_FORM_ITEM
+} from "../constant"
 import "antd/dist/antd.css"
 import FilterBar from "../components/FilterBar"
 import SimpleForm from "../components/SimpleForm"
@@ -22,7 +27,10 @@ class ItemListContainer extends Component {
   }
 
   editFormPathValue(key) {
-    this.props.editableFormHandler(key)
+    if (key !== undefined) {
+      this.props.editableFormHandler(key)
+    }
+    return
   }
 
   deleteItem(key) {
@@ -84,7 +92,7 @@ const mapDispatchToProps = dispatch => {
       dispatch({ type: LIST_FETCH_REQUESTED })
     },
     submitForm: param => {
-      dispatch({ type: CREATE_FORM_ITEM, payload: param })
+      dispatch({ type: SUBMIT_FORM_ITEM, payload: param })
     },
     editableFormHandler: param => {
       dispatch({ type: EDIT_FORM_ITEM, payload: param })
