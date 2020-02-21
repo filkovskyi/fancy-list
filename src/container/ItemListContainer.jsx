@@ -1,11 +1,12 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
 import { LIST_FETCH_REQUESTED, CREATE_FORM_ITEM } from "../constant"
-import { List, Row, Col, Layout, Button } from "antd"
 import "antd/dist/antd.css"
 import FilterBar from "../components/FilterBar"
-// import WrappedAccountForm from "../components/AccountForm"
 import SimpleForm from "../components/SimpleForm"
+
+import { Row, Col, Layout, Icon, Collapse } from "antd"
+const { Panel } = Collapse
 
 class ItemListContainer extends Component {
   constructor(props) {
@@ -22,32 +23,25 @@ class ItemListContainer extends Component {
 
   render() {
     let data = this.props.filteredData
+    const { showCreateForm } = this.props
     return (
       <Layout>
         <Row>
           <Col offset={6} span={12}>
             <h3 style={{ marginBottom: 16 }}>Filkovskyi Sergey</h3>
-            <SimpleForm onSubmit={this.handleSubmitForm} />
-
-            <List
-              bordered
-              header={<FilterBar />}
-              itemLayout="horizontal"
-              dataSource={data}
-              renderItem={item => (
-                <List.Item>
-                  <Col className="account-label" span={22}>
-                    {item.accountNumber} -{item.financialAccountCategory} -
-                    {item.currentVatPercentage}% - ({item.vatCategoryCode}) -{item.name}
-                  </Col>
-                  <Col span={2}>
-                    <Button icon="edit" type="link" onClick={e => console.log(e)}>
-                      Edit
-                    </Button>
-                  </Col>
-                </List.Item>
-              )}
-            />
+            <FilterBar />
+            {showCreateForm && <SimpleForm onSubmit={this.handleSubmitForm} />}
+            <Collapse accordion expandIcon={() => <Icon type="edit" />}>
+              {data.map((item, key) => {
+                const data = `${item.accountNumber} - ${item.financialAccountCategory} -
+                ${item.currentVatPercentage}% - (${item.vatCategoryCode}) -${item.name}`
+                return (
+                  <Panel header={data} key={key}>
+                    {/* <SimpleForm onSubmit={this.handleSubmitForm} /> */}
+                  </Panel>
+                )
+              })}
+            </Collapse>
           </Col>
         </Row>
       </Layout>
@@ -60,7 +54,8 @@ const mapStateToProps = state => {
     data: state.rootReducer.data,
     filteredData: state.rootReducer.filteredData,
     loading: state.rootReducer.loading,
-    error: state.rootReducer.error
+    error: state.rootReducer.error,
+    showCreateForm: state.rootReducer.showCreateForm
   }
 }
 

@@ -4,7 +4,8 @@ import {
   LIST_FETCH_FAILED,
   LIST_FILTER_BY_NAME,
   LIST_FILTER_BY_NUMBER,
-  CREATE_FORM_ITEM
+  CREATE_FORM_ITEM,
+  CREATE_NEW_ACCOUNT
 } from "../constant"
 
 import { filterItemsByName, filterItemsByNumber, maxAccountNumber } from "./reducer-helper"
@@ -14,6 +15,7 @@ const initialState = {
   filteredData: [],
   maxNumber: 0,
   loading: false,
+  showCreateForm: false,
   error: ""
 }
 
@@ -60,7 +62,14 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         filteredData: [...state.data, action.payload],
+        data: [...state.data, action.payload],
         loading: false
+      }
+    }
+    case CREATE_NEW_ACCOUNT: {
+      return {
+        ...state,
+        showCreateForm: !state.showCreateForm
       }
     }
     default:

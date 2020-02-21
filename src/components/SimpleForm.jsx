@@ -91,7 +91,7 @@ const SimpleForm = props => {
       />
       <Field label="Comment" name="comment" component={ATextarea} />
       <FormItem {...tailFormItemLayout}>
-        <Button style={{ marginRight: "55%" }} icon="delete" />
+        <Button style={{ marginRight: "35%" }} icon="delete" />
         <Button disabled={pristine || submitting} onClick={reset}>
           Clear
         </Button>

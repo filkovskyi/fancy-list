@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
-import { LIST_FILTER_BY_NAME, LIST_FILTER_BY_NUMBER } from "../constant"
+import { LIST_FILTER_BY_NAME, LIST_FILTER_BY_NUMBER, CREATE_NEW_ACCOUNT } from "../constant"
 import { debounce } from "lodash"
 import { Slider, Row, Col, Input, Button } from "antd"
 
@@ -21,6 +21,10 @@ class FilterBar extends Component {
     this.props.filterItemsByNumber(accountNumber)
   }
 
+  createNewAccountHandler = () => {
+    this.props.createNewAccount()
+  }
+
   render() {
     const { inputValue } = this.state
     const maxNumber = this.props.maxNumber
@@ -37,7 +41,7 @@ class FilterBar extends Component {
                 onChange={e => this.filterByNameHandler(e.target.value)}
                 type="text"
                 placeholder={"Filter by Name"}
-              />{" "}
+              />
             </Col>
 
             <Col span={10} offset={1}>
@@ -54,7 +58,12 @@ class FilterBar extends Component {
           </Row>
         </Col>
         <Col span={5} offset={1}>
-          <Button type="link" icon="plus" className="header-action" onClick={e => console.log(e)}>
+          <Button
+            type="link"
+            icon="plus"
+            className="header-action"
+            onClick={this.createNewAccountHandler}
+          >
             New Account
           </Button>
         </Col>
@@ -77,6 +86,9 @@ const mapDispatchToProps = dispatch => {
     },
     filterItemsByNumber: param => {
       dispatch({ type: LIST_FILTER_BY_NUMBER, payload: param })
+    },
+    createNewAccount: () => {
+      dispatch({ type: CREATE_NEW_ACCOUNT })
     }
   }
 }
