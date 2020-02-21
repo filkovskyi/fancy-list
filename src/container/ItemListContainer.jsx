@@ -1,24 +1,34 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
-import { LIST_FETCH_REQUESTED } from "../constant"
-import { List, Row, Col, Layout } from "antd"
+import { LIST_FETCH_REQUESTED, CREATE_FORM_ITEM } from "../constant"
+import { List, Row, Col, Layout, Button } from "antd"
 import "antd/dist/antd.css"
 import FilterBar from "../components/FilterBar"
+// import WrappedAccountForm from "../components/AccountForm"
+import SimpleForm from "../components/SimpleForm"
 
 class ItemListContainer extends Component {
+  constructor(props) {
+    super(props)
+    this.handleSubmitForm = this.handleSubmitForm.bind(this)
+  }
   componentDidMount() {
     this.props.listFetchInitAction()
   }
 
+  handleSubmitForm(values) {
+    this.props.submitForm(values)
+  }
+
   render() {
     let data = this.props.filteredData
-    //let filteredData = this.props.filteredData
-    //filteredData.length > 0 ? (data = filteredData) : (data = this.props.data)
     return (
       <Layout>
         <Row>
           <Col offset={6} span={12}>
-            <h3 style={{ marginBottom: 16 }}>All list</h3>
+            <h3 style={{ marginBottom: 16 }}>Filkovskyi Sergey</h3>
+            <SimpleForm onSubmit={this.handleSubmitForm} />
+
             <List
               bordered
               header={<FilterBar />}
@@ -26,13 +36,15 @@ class ItemListContainer extends Component {
               dataSource={data}
               renderItem={item => (
                 <List.Item>
-                  <span>{item.accountNumber} </span>
-                  <span>{item.financialAccountCategory} </span>
-                  <span>{item.financialAccountCategory} </span>
-                  <span>{item.currentVatPercentage}% </span>
-                  <span>({item.vatCategoryCode}) </span>
-                  <span>{item.name} </span>
-                  <button onClick={e => console.log(e)}>Edit</button>
+                  <Col className="account-label" span={22}>
+                    {item.accountNumber} -{item.financialAccountCategory} -
+                    {item.currentVatPercentage}% - ({item.vatCategoryCode}) -{item.name}
+                  </Col>
+                  <Col span={2}>
+                    <Button icon="edit" type="link" onClick={e => console.log(e)}>
+                      Edit
+                    </Button>
+                  </Col>
                 </List.Item>
               )}
             />
@@ -45,10 +57,10 @@ class ItemListContainer extends Component {
 
 const mapStateToProps = state => {
   return {
-    data: state.data,
-    filteredData: state.filteredData,
-    loading: state.loading,
-    error: state.error
+    data: state.rootReducer.data,
+    filteredData: state.rootReducer.filteredData,
+    loading: state.rootReducer.loading,
+    error: state.rootReducer.error
   }
 }
 
@@ -57,6 +69,9 @@ const mapDispatchToProps = dispatch => {
   return {
     listFetchInitAction: () => {
       dispatch({ type: LIST_FETCH_REQUESTED })
+    },
+    submitForm: param => {
+      dispatch({ type: CREATE_FORM_ITEM, payload: param })
     }
   }
 }

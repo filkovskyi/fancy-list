@@ -3,7 +3,8 @@ import {
   LIST_FETCH_SUCCEEDED,
   LIST_FETCH_FAILED,
   LIST_FILTER_BY_NAME,
-  LIST_FILTER_BY_NUMBER
+  LIST_FILTER_BY_NUMBER,
+  CREATE_FORM_ITEM
 } from "../constant"
 
 import { filterItemsByName, filterItemsByNumber, maxAccountNumber } from "./reducer-helper"
@@ -52,6 +53,13 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         filteredData: filterItemsByNumber(state.data, action.payload),
+        loading: false
+      }
+    }
+    case CREATE_FORM_ITEM: {
+      return {
+        ...state,
+        filteredData: [...state.data, action.payload],
         loading: false
       }
     }

@@ -26,9 +26,9 @@ class FilterBar extends Component {
     const maxNumber = this.props.maxNumber
 
     return (
-      <Row type="flex" justify="center">
+      <Row type="flex" justify="center" align="middle">
         <Col span={6}>
-          <span>Bookkeeping accounts</span>
+          <span className="account-label">Bookkeeping accounts</span>
         </Col>
         <Col span={12}>
           <Row type="flex" justify="center">
@@ -54,12 +54,7 @@ class FilterBar extends Component {
           </Row>
         </Col>
         <Col span={5} offset={1}>
-          <Button
-            type="primary"
-            icon="plus"
-            className="header-action"
-            onClick={e => console.log(e)}
-          >
+          <Button type="link" icon="plus" className="header-action" onClick={e => console.log(e)}>
             New Account
           </Button>
         </Col>
@@ -70,7 +65,7 @@ class FilterBar extends Component {
 
 const mapStateToProps = state => {
   return {
-    maxNumber: state.maxNumber
+    maxNumber: state.rootReducer.maxNumber
   }
 }
 
