@@ -1,4 +1,4 @@
-const filterItemsByName = (data, param) => {
+export const filterItemsByName = (data, param) => {
   if (!param) {
     return data
   }
@@ -9,7 +9,7 @@ const filterItemsByName = (data, param) => {
   })
 }
 
-const filterItemsByNumber = (data, param) => {
+export const filterItemsByNumber = (data, param) => {
   if (param > 1) {
     const filteredArr = data.filter(account => {
       return account.accountNumber < param
@@ -20,11 +20,22 @@ const filterItemsByNumber = (data, param) => {
   }
 }
 
-const maxAccountNumber = data => {
+export const maxAccountNumber = data => {
   return Math.max(
     ...data.map(account => {
       return account.accountNumber
     })
   )
 }
-export { filterItemsByName, filterItemsByNumber, maxAccountNumber }
+
+export const filteredData = (dataSet, submittedId) => {
+  return dataSet.filter(i => {
+    return i.id !== submittedId
+  })
+}
+
+export const generatedRandomId = () => {
+  return Math.random()
+    .toString(36)
+    .substr(2, 9)
+}

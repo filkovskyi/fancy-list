@@ -10,7 +10,13 @@ import {
   SHOW_CREATE_NEW_ACCOUNT_FORM
 } from "../constant"
 
-import { filterItemsByName, filterItemsByNumber, maxAccountNumber } from "./reducer-helper"
+import {
+  filterItemsByName,
+  filterItemsByNumber,
+  maxAccountNumber,
+  filteredData,
+  generatedRandomId
+} from "./reducer-helper"
 
 const initialState = {
   data: [],
@@ -62,29 +68,24 @@ const rootReducer = (state = initialState, action) => {
       }
     }
     case SUBMIT_FORM_ITEM: {
-      debugger
       // Edit existing items
       if (action.payload.id !== undefined) {
-        const submittedId = action.payload.id
-        const filteredDataSet = [...state.data].filter(i => {
-          return i.id !== submittedId
-        })
+        const filteredDataSet = filteredData([...state.data], action.payload.id)
         return {
           ...state,
           filteredData: [...filteredDataSet, action.payload],
           data: [...filteredDataSet, action.payload],
+          maxNumber: maxAccountNumber([...filteredDataSet, action.payload]),
           loading: false
         }
       } else {
         // Create new items
-        const generatedRandomId = Math.random()
-          .toString(36)
-          .substr(2, 9)
-
+        const randomId = generatedRandomId()
         return {
           ...state,
-          filteredData: [...state.data, { ...action.payload, id: generatedRandomId }],
-          data: [...state.data, { ...action.payload, id: generatedRandomId }],
+          filteredData: [...state.data, { ...action.payload, id: randomId }],
+          data: [...state.data, { ...action.payload, id: randomId }],
+          maxNumber: maxAccountNumber([...state.data, { ...action.payload, id: randomId }]),
           loading: false
         }
       }
@@ -97,14 +98,12 @@ const rootReducer = (state = initialState, action) => {
     }
     case DELETE_FORM_ITEM: {
       const removableId = state.data[action.payload].id
+      const filteredDataSet = filteredData([...state.data], removableId)
       return {
         ...state,
-        filteredData: [...state.data].filter(i => {
-          return i.id !== removableId
-        }),
-        data: [...state.data].filter(i => {
-          return i.id !== removableId
-        })
+        filteredData: filteredDataSet,
+        data: filteredDataSet,
+        maxNumber: maxAccountNumber(filteredDataSet)
       }
     }
     case SHOW_CREATE_NEW_ACCOUNT_FORM: {

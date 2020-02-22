@@ -1,10 +1,6 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
-import {
-  LIST_FILTER_BY_NAME,
-  LIST_FILTER_BY_NUMBER,
-  SHOW_CREATE_NEW_ACCOUNT_FORM
-} from "../constant"
+import { filterItemsByName, filterItemsByNumber, createNewAccount } from "../actions"
 import { debounce } from "lodash"
 import { Slider, Row, Col, Input, Button } from "antd"
 
@@ -82,18 +78,11 @@ const mapStateToProps = state => {
   }
 }
 
-// TODO:REFACTOR make actionCreater in separate file
 const mapDispatchToProps = dispatch => {
   return {
-    filterItemsByName: param => {
-      dispatch({ type: LIST_FILTER_BY_NAME, payload: param })
-    },
-    filterItemsByNumber: param => {
-      dispatch({ type: LIST_FILTER_BY_NUMBER, payload: param })
-    },
-    createNewAccount: () => {
-      dispatch({ type: SHOW_CREATE_NEW_ACCOUNT_FORM })
-    }
+    filterItemsByName: name => dispatch(filterItemsByName(name)),
+    filterItemsByNumber: param => dispatch(filterItemsByNumber(param)),
+    createNewAccount: () => dispatch(createNewAccount())
   }
 }
 

@@ -1,11 +1,6 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
-import {
-  LIST_FETCH_REQUESTED,
-  SUBMIT_FORM_ITEM,
-  EDIT_FORM_ITEM,
-  DELETE_FORM_ITEM
-} from "../constant"
+import { listFetchInitAction, submitForm, editableFormHandler, deleteItemHandler } from "../actions"
 import "antd/dist/antd.css"
 import FilterBar from "../components/FilterBar"
 import SimpleForm from "../components/SimpleForm"
@@ -85,21 +80,12 @@ const mapStateToProps = state => {
   }
 }
 
-// TODO:REFACTOR make actionCreater in separate file
 const mapDispatchToProps = dispatch => {
   return {
-    listFetchInitAction: () => {
-      dispatch({ type: LIST_FETCH_REQUESTED })
-    },
-    submitForm: param => {
-      dispatch({ type: SUBMIT_FORM_ITEM, payload: param })
-    },
-    editableFormHandler: param => {
-      dispatch({ type: EDIT_FORM_ITEM, payload: param })
-    },
-    deleteItemHandler: param => {
-      dispatch({ type: DELETE_FORM_ITEM, payload: param })
-    }
+    listFetchInitAction: () => dispatch(listFetchInitAction()),
+    submitForm: data => dispatch(submitForm(data)),
+    editableFormHandler: data => dispatch(editableFormHandler(data)),
+    deleteItemHandler: data => dispatch(deleteItemHandler(data))
   }
 }
 

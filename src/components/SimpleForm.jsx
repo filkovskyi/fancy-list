@@ -52,6 +52,8 @@ const ATextarea = makeField(TextArea)
 
 let SimpleForm = props => {
   const { handleSubmit, pristine, reset, submitting } = props
+  const fieldsIsValid = props.valid
+
   return (
     <Form onSubmit={handleSubmit}>
       <Field
@@ -65,18 +67,33 @@ let SimpleForm = props => {
         label="Category"
         name="financialAccountCategory"
         component={ARadioGroup}
-        value="purchases"
+        buttonStyle="solid"
+        hasFeedback
       >
-        <Radio value="sale">Sale</Radio>
-        <Radio value="purchases">Purchases</Radio>
+        <Radio.Button value="sales">Sales</Radio.Button>
+        <Radio.Button value="purchases">Purchases</Radio.Button>
       </Field>
+      <Field
+        label="Current Vat Percentage"
+        name="currentVatPercentage"
+        component={AInput}
+        placeholder="Current Vat Percentage"
+        hasFeedback
+      />
       <Field
         label="Vat category code"
         name="vatCategoryCode"
         component={AInput}
         placeholder="Vat category code"
+        hasFeedback
       />
-      <Field label="Account name" name="name" component={AInput} placeholder="Account name" />
+      <Field
+        label="Account name"
+        name="name"
+        component={AInput}
+        placeholder="Account name"
+        hasFeedback
+      />
       <Field
         label="External revenue class"
         name="externalRevenueClass"
@@ -96,7 +113,7 @@ let SimpleForm = props => {
         </Button>
         <Button
           type="primary"
-          disabled={pristine || submitting}
+          disabled={!fieldsIsValid}
           htmlType="submit"
           style={{ marginLeft: "10px" }}
         >
@@ -109,8 +126,28 @@ let SimpleForm = props => {
 
 const validate = values => {
   const errors = {}
-  if (!values.firstName) {
-    errors.firstName = "Required"
+  // Account Number validation
+  if (!values.accountNumber || !!isNaN(values.accountNumber)) {
+    errors.accountNumber = "Required or Should be a number"
+  }
+
+  // Financial Account Category validation
+  if (!values.financialAccountCategory) {
+    errors.financialAccountCategory = "Required"
+  }
+
+  // current Vat Percentage validation
+  if (!values.currentVatPercentage || !!isNaN(values.currentVatPercentage)) {
+    errors.currentVatPercentage = "Required or Should be a number"
+  }
+
+  // Vat Category Code validation
+  if (!values.vatCategoryCode) {
+    errors.vatCategoryCode = "Required"
+  }
+  // Account name validation
+  if (!values.name) {
+    errors.name = "Required"
   }
 
   return errors
