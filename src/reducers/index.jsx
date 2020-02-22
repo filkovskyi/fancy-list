@@ -52,7 +52,6 @@ const rootReducer = (state = initialState, action) => {
         error: action.error
       }
     }
-
     case LIST_FILTER_BY_NAME: {
       return {
         ...state,
