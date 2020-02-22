@@ -10,9 +10,13 @@ export const filterItemsByName = (data, param) => {
 }
 
 export const filterItemsByNumber = (data, param) => {
+  if (!param) {
+    return data
+  }
+
   if (param > 1) {
     const filteredArr = data.filter(account => {
-      return account.accountNumber < param
+      return account.accountNumber <= param
     })
     return filteredArr
   } else {

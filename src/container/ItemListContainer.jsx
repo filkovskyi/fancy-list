@@ -72,7 +72,6 @@ class ItemListContainer extends Component {
 
 const mapStateToProps = state => {
   return {
-    data: state.rootReducer.data,
     filteredData: state.rootReducer.filteredData,
     loading: state.rootReducer.loading,
     error: state.rootReducer.error,
